@@ -1,0 +1,98 @@
+{% extends "bitrix24/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} | Регистрация
+{% endblock title %}
+
+{% block content %}
+
+<div class="edit_profile register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9">
+                <div class="right_part space-y-20">
+                    <h1 class="color_white"> Редактирование аккаунта</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="box edit_box w-full space-y-20">
+                            <div class="row">
+                                <div class="col-lg-6 account-info">
+                                    <h3 class="mb-20"> 🍉 Инфо аккаунта </h3>
+                                    <div class="form-group space-y-10 mb-0">
+                                        <div class="space-y-20">
+                                            <div class="space-y-10">
+                                                <span class="nameInput">Логин</span>
+                                                <p>
+                                                    <strong style="background-color: red">
+                                                        {{ form.username.errors }}
+                                                    </strong>
+                                                </p>
+                                                {{ form.username }}
+                                            </div>
+                                            <div class="space-y-10">
+                                                <span class="nameInput">Email</span>
+                                                <p>
+                                                    <strong style="background-color: red">
+                                                        {{ form.email.errors }}
+                                                    </strong>
+                                                </p>
+                                                {{ form.email }}
+                                            </div>
+                                            <div class="space-y-10">
+                                                <span class="nameInput">Имя</span>
+                                                <p>
+                                                    <strong style="background-color: red">
+                                                        {{ form.first_name.errors }}
+                                                    </strong>
+                                                </p>
+                                                {{ form.first_name }}
+                                            </div>
+                                            <div class="space-y-10">
+                                                <span class="nameInput">Фамилия</span>
+                                                <p>
+                                                    <strong style="background-color: red">
+                                                        {{ form.last_name.errors }}
+                                                    </strong>
+                                                </p>
+                                                {{ form.last_name }}
+                                            </div>
+                                            <div class="space-y-10">
+                                                    <span class="nameInput">Контакты</span>
+                                                    <strong style="background-color: red">
+                                                        {{ form.contacts.errors }}
+                                                    </strong>
+                                                {{ form.contacts }}
+                                            </div>
+                                            {% if user.is_executor %}
+                                            <div class="space-y-10">
+                                                <span class="nameInput">Опыт</span>
+                                                <p>
+                                                    <strong style="background-color: red">
+                                                        {{ form.experience.errors }}
+                                                    </strong>
+                                                </p>
+                                                {{ form.experience }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hr"></div>
+                            <div style="display: flex;">
+                                {{ form.is_executor }}
+                                <button type="submit" class="btn btn-grad" style="margin-right: auto;" >
+                                    Сохранить изменения
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

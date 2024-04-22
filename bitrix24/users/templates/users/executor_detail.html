@@ -1,0 +1,46 @@
+{% extends "bitrix24/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} | Профиль
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="text-align: center"> Личный кабинет исполнителя</h1>
+<br>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-3">
+      <h5>Личные данные исполнителя</h5>
+      <div style="border: 1px solid black">Логин
+        <p class="col">{{ user.username }}</p>
+      </div>
+      <div style="border: 1px solid black">Email
+        <p class="col">{{ user.email }}</p>
+      </div>
+            <div style="border: 1px solid black">Контакты
+        <p class="col">{{ user.contacts }}</p>
+      </div>
+            <div style="border: 1px solid black">Имя
+        <p class="col">{{ user.first_name }}</p>
+      </div>
+            <div style="border: 1px solid black">Фамилия
+        <p class="col">{{ user.last_name }}</p>
+      </div>
+      <div style="border: 1px solid black">Опыт
+        <p class="col">{{ user.experience }}</p>
+      </div>
+      <a href="{% url 'users:update' user.pk %}" class="btn btn-primary">Редактировать</a>
+    </div>
+    <div class="col-sm-9">
+      <div class="row">
+        <h5>Информация для исполнителя.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
